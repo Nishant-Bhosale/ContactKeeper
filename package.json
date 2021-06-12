@@ -1,0 +1,21 @@
+{
+	"name": "contact-keeper",
+	"version": "1.0.0",
+	"description": "Contact Manager App",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"config": "^3.3.6",
+		"express": "^4.17.1",
+		"express-validator": "^6.11.1",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.12.13"
+	}
+}
