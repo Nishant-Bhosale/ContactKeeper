@@ -2,18 +2,23 @@ import React, { useState, useContext, useEffect } from "react";
 import alertContext from "../../context/alert/alertContext";
 import authContext from "../../context/auth/authContext";
 
-const Register = () => {
+const Register = (props) => {
 	const AlertContext = useContext(alertContext);
 	const AuthContext = useContext(authContext);
 
-	const { registerUser, error, clearErrors } = AuthContext;
+	const { registerUser, error, clearErrors, isAuthenticated } = AuthContext;
 
 	useEffect(() => {
+		if (isAuthenticated) {
+			props.history.push("/");
+		}
+
 		if (error) {
 			AlertContext.setAlert(error, "danger");
 			clearErrors();
 		}
-	}, [error]);
+		//eslint-disable-next-line
+	}, [error, isAuthenticated, props.history]);
 
 	const [user, setUser] = useState({
 		name: "",
