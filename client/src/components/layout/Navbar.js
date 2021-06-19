@@ -8,15 +8,7 @@ const Navbar = ({ title, icon }) => {
 			<h1>
 				<i className={icon} /> {title}
 			</h1>
-			<ul
-				style={{
-					listStyle: "none",
-					display: "flex",
-					justifyContent: "space-between",
-					padding: "0",
-					width: "10rem",
-				}}
-			>
+			<ul>
 				<li>
 					<Link to="/" style={{ color: "white" }}>
 						Home
@@ -25,6 +17,16 @@ const Navbar = ({ title, icon }) => {
 				<li>
 					<Link to="/about" style={{ color: "white" }}>
 						About
+					</Link>
+				</li>
+				<li>
+					<Link to="/register" style={{ color: "white" }}>
+						Register
+					</Link>
+				</li>
+				<li>
+					<Link to="/login" style={{ color: "white" }}>
+						Login
 					</Link>
 				</li>
 			</ul>
