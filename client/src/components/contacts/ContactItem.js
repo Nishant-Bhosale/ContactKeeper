@@ -12,16 +12,18 @@ const ContactItem = ({ contact }) => {
 		clearCurrentContact,
 	} = contactContext;
 
-	const { name, id, email, phone, type } = contact;
+	const { name, _id, email, phone, type } = contact;
 
 	const onDeleteHandler = () => {
 		clearCurrentContact();
-		deleteContact(id);
+		deleteContact(_id);
 	};
 
 	const onUpdateHandler = () => {
+		updateContact(contact);
 		setCurrentContact(contact);
 	};
+
 	return (
 		<div className="card bg-light">
 			<h3 className="text-primary text-left">

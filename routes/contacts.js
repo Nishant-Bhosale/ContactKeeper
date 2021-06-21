@@ -76,8 +76,6 @@ router.put("/:id", auth, async (req, res) => {
 		console.error(error.message);
 		res.status(500).send("Server Error");
 	}
-
-	res.send("Update contact");
 });
 
 router.delete("/:id", auth, async (req, res) => {
