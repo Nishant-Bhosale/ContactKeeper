@@ -7,7 +7,6 @@ import AuthState from "./context/auth/AuthState";
 import Navbar from "./components/layout/Navbar";
 import Alerts from "./components/layout/alerts";
 import setAuthToken from "./utils/setAuthToken";
-import About from "./components/pages/About";
 import Login from "./components/auth/Login";
 import Home from "./components/pages/Home";
 import React, { Fragment } from "react";
@@ -29,7 +28,6 @@ const App = () => {
 								<Alerts />
 								<Switch>
 									<PrivateRoute exact path="/" component={Home} />
-									<Route exact path="/about" component={About} />
 									<Route exact path="/register" component={Register} />
 									<Route exact path="/login" component={Login} />
 								</Switch>

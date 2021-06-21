@@ -16,16 +16,6 @@ const Navbar = ({ title, icon }) => {
 				<i className={icon} /> {title}
 			</h1>
 			<ul>
-				<li>
-					<Link to="/" style={{ color: "white" }}>
-						Home
-					</Link>
-				</li>
-				<li>
-					<Link to="/about" style={{ color: "white" }}>
-						About
-					</Link>
-				</li>
 				{isAuthenticated ? (
 					<li onClick={logoutUser}>
 						<a href="#!" style={{ color: "white" }}>

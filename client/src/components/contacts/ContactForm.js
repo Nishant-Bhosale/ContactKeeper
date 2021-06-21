@@ -25,6 +25,7 @@ const ContactForm = () => {
 				type: "personal",
 			});
 		}
+		//eslint-disable-next-line
 	}, [contactContext]);
 
 	const { name, email, phone, type } = contact;
