@@ -2,7 +2,7 @@ const express = require("express");
 const auth = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 const Contact = require("../models/Contacts");
-const User = require("../models/User");
+// const User = require("../models/User");
 const router = express.Router();
 
 router.get("/", auth, async (req, res) => {
@@ -17,38 +17,35 @@ router.get("/", auth, async (req, res) => {
 	}
 });
 
-router.post(
-	"/",
-	[auth, [check("name", "Name is Required")]],
-	async (req, res) => {
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(400).json({ errors: errors.array() });
-		}
+router.post("/", auth, async (req, res) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		console.log(errors);
+		return res.status(400).json({ errors: errors.array() });
+	}
 
-		const { name, email, phone, type } = req.body;
-		try {
-			const newContact = new Contact({
-				name,
-				email,
-				phone,
-				type,
-				user: req.user.id,
-			});
+	try {
+		// const { name, email, phone, type } = req.body;
+		const newContact = new Contact({
+			name: req.body.name,
+			email: req.body.email,
+			phone: req.body.phone,
+			type: req.body.type,
+			user: req.user.id,
+		});
 
-			const contact = await newContact.save();
+		const contact = await newContact.save();
 
-			res.json(contact);
-		} catch (error) {
-			res.status(500).send();
-			console.error("Server Error");
-		}
-	},
-);
+		res.json(contact);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send("Internal Server Error");
+		console.error("Server Error");
+	}
+});
 
 router.put("/:id", auth, async (req, res) => {
 	const id = req.params.id;
-	console.log(id);
 	const { name, email, phone, type } = req.body;
 
 	let contactFields = {};

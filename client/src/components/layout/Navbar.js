@@ -1,8 +1,15 @@
-import React from "react";
+import React, { Fragment, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/auth/authContext";
 
 const Navbar = ({ title, icon }) => {
+	const authContext = useContext(AuthContext);
+	const { isAuthenticated, logout, user } = authContext;
+
+	const logoutUser = () => {
+		logout();
+	};
 	return (
 		<div className="navbar bg-primary">
 			<h1>
@@ -19,7 +26,28 @@ const Navbar = ({ title, icon }) => {
 						About
 					</Link>
 				</li>
-				<li>
+				{isAuthenticated ? (
+					<li onClick={logoutUser}>
+						<a href="#!" style={{ color: "white" }}>
+							<i className="fas fa-sign-out-alt"></i>
+							<span>Logout</span>
+						</a>
+					</li>
+				) : (
+					<Fragment>
+						<li>
+							<Link to="/register" style={{ color: "white" }}>
+								Register
+							</Link>
+						</li>
+						<li>
+							<Link to="/login" style={{ color: "white" }}>
+								Login
+							</Link>
+						</li>
+					</Fragment>
+				)}
+				{/* <li>
 					<Link to="/register" style={{ color: "white" }}>
 						Register
 					</Link>
@@ -28,7 +56,7 @@ const Navbar = ({ title, icon }) => {
 					<Link to="/login" style={{ color: "white" }}>
 						Login
 					</Link>
-				</li>
+				</li> */}
 			</ul>
 		</div>
 	);
