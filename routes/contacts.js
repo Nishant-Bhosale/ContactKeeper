@@ -2,7 +2,6 @@ const express = require("express");
 const auth = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 const Contact = require("../models/Contacts");
-// const User = require("../models/User");
 const router = express.Router();
 
 router.get("/", auth, async (req, res) => {
@@ -20,12 +19,10 @@ router.get("/", auth, async (req, res) => {
 router.post("/", auth, async (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
-		console.log(errors);
 		return res.status(400).json({ errors: errors.array() });
 	}
 
 	try {
-		// const { name, email, phone, type } = req.body;
 		const newContact = new Contact({
 			name: req.body.name,
 			email: req.body.email,
