@@ -3,6 +3,7 @@ import ContactForm from "../contacts/ContactForm";
 import ContactFilter from "../contacts/ContacFilter";
 import Contacts from "../contacts/Contacts";
 import AuthContext from "../../context/auth/authContext";
+import { Link } from "react-router-dom";
 const Home = () => {
 	const authContext = useContext(AuthContext);
 
@@ -25,3 +26,4 @@ const Home = () => {
 };
 
 export default Home;
+
